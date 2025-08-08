@@ -1,0 +1,89 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #e5ddd5;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #ffffff;
+    max-width: 500px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+    background-color: #075e54;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.messages {
+    list-style-type: none;
+    padding: 10px;
+    overflow-y: scroll;
+    flex-grow: 1;
+    margin: 0;
+    height: calc(100vh - 140px);
+}
+
+/* Styling for user (right-aligned) messages */
+.message.user {
+    background-color: #ffffff;  /* White background for sent messages */
+    align-self: flex-end;  /* Align to the right */
+    color: #000000;
+    max-width: 80%;  /* Max width for the messages */
+    padding: 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling for other (left-aligned) messages */
+.message.other {
+    background-color: #DCF8C6;  /* Green background for incoming messages */
+    align-self: flex-start;  /* Align to the left */
+    color: #000000;
+    max-width: 80%;  /* Max width for the messages */
+    padding: 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+}
+
+.chat-input button {
+    background-color: #075e54;
+    color: white;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #128c7e;
+}

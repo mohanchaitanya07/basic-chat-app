@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Chat</h1>
+        </div>
+        <div id="messages" class="messages"></div>
+        <form id="form" action="" class="chat-input">
+            <input id="input" autocomplete="off" placeholder="Type a message" />
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io();
+        
+        // Handle form submission and send message
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            socket.emit('chat message', input.value); // Send message to server
+            input.value = ''; // Clear the input field
+        });
+
+        // Listen for incoming messages and display them
+        socket.on('chat message', function(data) {
+            var li = document.createElement('li');
+            li.textContent = data.msg; // Display message (with emoji)
+            li.classList.add('message');
+            li.classList.add(data.sender); // Add class for alignment (user or other)
+            document.getElementById('messages').appendChild(li);
+        });
+    </script>
+</body>
+</html>
